@@ -1,11 +1,11 @@
-import { Button, Input } from "@material-tailwind/react";
+import { Button, Input, Option, Select } from "@material-tailwind/react";
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { IoMdEyeOff } from "react-icons/io";
 import { IoEye } from "react-icons/io5";
 
-const SendMoney = () => {
+const CashOut = () => {
   const [showPass, setShowPass] = useState(false);
 
   const {
@@ -26,14 +26,14 @@ const SendMoney = () => {
   return (
     <div className="mx-4 my-14 md:container lg:max-w-6xl lg:mx-auto md:px-8">
       {/* <Helmet>
-        <title>NovaHomes | Register Page</title>
-      </Helmet> */}
+      <title>NovaHomes | Register Page</title>
+    </Helmet> */}
       <div>
-        <h1 className="text-4xl md:text-6xl lg:text-8xl font-normal text-green-500">
-          Send Money
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-normal text-green-500">
+          Cash Out
         </h1>
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-normal text-[#39474F]">
-          Securely
+        <h1 className="text-4xl md:text-6xl lg:text-6xl font-normal text-[#39474F]">
+          ReQuest
         </h1>
       </div>
       <div className="flex flex-col lg:flex-row">
@@ -43,26 +43,24 @@ const SendMoney = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="text-xl text-[#39474F] grid grid-cols-1 lg:grid-cols-2 gap-10"
           >
-            {/* Recipient Phone Number input */}
-            <div className="mt-5 form-control">
-              <label>
-                Recipient Number<span className="text-red-400">*</span>{" "}
-              </label>
-              <Input
-                variant="standard"
-                placeholder="Enter The Valid Number"
-                name="recipientNumber"
-                type="Number"
-                size="md"
-                color="green"
-                {...register("recipientNumber", { required: true })}
-                className="py-3 text-xl"
-              />
-              {errors.recipientNumber && (
+            {/* Agent Number input */}
+
+            <div className="mt-12 form-control">
+              <select
+                name="cashOutAgentNumber"
+                className="select select-success w-full text-base"
+                {...register("cashOutAgentNumber", { required: true })}
+              >
+                <option>One Piece</option>
+                <option>Naruto</option>
+              </select>
+
+              {errors.cashOutAgentNumber && (
                 <span className="text-red-600">This field is required</span>
               )}
             </div>
-            {/* Send Money Amount input */}
+
+            {/* Cash out Money Amount input */}
             <div className="mt-5 form-control">
               <label>
                 Amount <span className="text-red-400">*</span>{" "}
@@ -70,37 +68,18 @@ const SendMoney = () => {
               <Input
                 variant="standard"
                 placeholder="Give the amount"
-                name="sendMoneyAmount"
+                name="cashOutAmount"
                 type="Number"
                 size="md"
                 color="green"
-                {...register("sendMoneyAmount", { required: true })}
+                {...register("cashOutAmount", { required: true })}
                 className="py-3 text-xl"
               />
-              {errors.sendMoneyAmount && (
+              {errors.cashOutAmount && (
                 <span className="text-red-600">This field is required</span>
               )}
             </div>
-            {/* Message for recipient input */}
-            <div className="mt-5 form-control">
-              <label>
-                Message <span className="text-red-400">*</span>{" "}
-              </label>
-              <Input
-                variant="standard"
-                placeholder="Want to send message for the recipient?"
-                name="recipientMessage"
-                type="text"
-                size="md"
-                color="green"
-                {...register("recipientMessage", { required: true })}
-                className="py-3 text-xl"
-              />
 
-              {errors.recipientMessage && (
-                <span className="text-red-600">This field is required</span>
-              )}
-            </div>
             {/* PIN input */}
             <div className="mt-5 form-control relative">
               <label>
@@ -109,11 +88,11 @@ const SendMoney = () => {
               <Input
                 variant="standard"
                 placeholder="Enter Your valid PIN"
-                name="senderPin"
+                name="cashOuterPin"
                 type={showPass ? "text" : "password"}
                 size="md"
                 color="green"
-                {...register("senderPin", { required: true })}
+                {...register("cashOuterPin", { required: true })}
                 className="py-3 text-xl"
               />
               <span
@@ -126,7 +105,7 @@ const SendMoney = () => {
                   <IoMdEyeOff className="text-black" />
                 )}
               </span>
-              {errors.senderPin && (
+              {errors.cashOuterPin && (
                 <span className="text-red-600">This field is required</span>
               )}
             </div>
@@ -137,7 +116,7 @@ const SendMoney = () => {
                 color="green"
                 className=" text-base rounded-full px-10"
               >
-                Send
+                OUT
               </Button>
               {/* <ToastContainer /> */}
             </div>
@@ -148,4 +127,4 @@ const SendMoney = () => {
   );
 };
 
-export default SendMoney;
+export default CashOut;
