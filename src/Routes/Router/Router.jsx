@@ -13,6 +13,7 @@ import AgentAllCashInRequest from "../../Pages/dashboard/agentAllCashInRequest/A
 import AgentAllCashOutRequest from "../../Pages/dashboard/agentAllCashoutRequest/AgentAllCashOutRequest";
 import AgentBalanceQuery from "../../Pages/dashboard/agentBalanceQuery/AgentBalanceQuery";
 import UserManageByAdmin from "../../Pages/dashboard/userManageByAdmin/UserManageByAdmin";
+import AdminSystemMonitoring from "../../Pages/dashboard/adminSystemMonitoring/AdminSystemMonitoring";
 
 export const router = createBrowserRouter([
   {
@@ -61,9 +62,14 @@ export const router = createBrowserRouter([
         path: "/agentBalanceInquiry",
         element: <AgentBalanceQuery></AgentBalanceQuery>,
       },
+      // admin routes
       {
         path: "/userManagement",
         element: <UserManageByAdmin></UserManageByAdmin>,
+      },
+      {
+        path: "/systemMonitoring",
+        element: <AdminSystemMonitoring></AdminSystemMonitoring>,
       },
     ],
   },

@@ -20,7 +20,7 @@ const UserManageByAdmin = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div className=" border-2 border-[#39474F] bg-white p-3 py-5 rounded-2xl space-y-3 ">
           <div className="">
-            <div className="avatar">
+            <div className="avatar flex justify-center mb-2">
               <div className="w-12 md:w-14 mask mask-squircle">
                 <img referrerPolicy="no-referrer" src="/blogo1.jpg" />
               </div>
