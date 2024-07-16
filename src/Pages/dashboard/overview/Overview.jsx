@@ -34,9 +34,15 @@ const Overview = () => {
         </div>
       </div>
       {/* main div 3 */}
-      <div className=" border border-gray-200 shadow-md rounded-xl md:col-span-2 flex justify-evenly p-3 flex-col md:flex-row">
-        <p className="text-lg font-semibold">Account Balance : </p>
-        <p className="text-lg font-medium break-all">34394394</p>
+      <div className=" border border-gray-200 shadow-md rounded-xl md:col-span-2  p-3 flex justify-evenly gap-5">
+        <div className="flex flex-col md:flex-row gap-2 justify-evenly">
+          <p className="text-lg font-semibold">Account Balance:</p>
+          <p className="text-lg font-medium break-all">34394394</p>
+        </div>
+        <div className="flex flex-col gap-2 md:flex-row justify-evenly">
+          <p className="text-lg font-semibold">ROLE:</p>
+          <p className="text-lg font-medium break-all">User</p>
+        </div>
       </div>
     </section>
   );
