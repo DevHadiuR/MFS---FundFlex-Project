@@ -11,6 +11,7 @@ import UserBalanceInquery from "../../Pages/dashboard/userBalanceInquery/UserBal
 import AgentTransactions from "../../Pages/dashboard/agentTransactions/AgentTransactions";
 import AgentAllCashInRequest from "../../Pages/dashboard/agentAllCashInRequest/AgentAllCashInRequest";
 import AgentAllCashOutRequest from "../../Pages/dashboard/agentAllCashoutRequest/AgentAllCashOutRequest";
+import AgentBalanceQuery from "../../Pages/dashboard/agentBalanceQuery/AgentBalanceQuery";
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
       {
         path: "/cashOutRequests",
         element: <AgentAllCashOutRequest></AgentAllCashOutRequest>,
+      },
+      {
+        path: "/agentBalanceInquiry",
+        element: <AgentBalanceQuery></AgentBalanceQuery>,
       },
     ],
   },
