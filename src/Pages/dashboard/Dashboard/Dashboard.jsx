@@ -103,64 +103,56 @@ const Dashboard = () => {
           {/* User route */}
           <>
             <li>
-              <NavLink to="/dashboard/overview">Overview</NavLink>
+              <NavLink to="/overview">Overview</NavLink>
             </li>
             <li>
-              <NavLink to="/dashboard/transactionsHistory">
-                Transactions History
-              </NavLink>
+              <NavLink to="/transactionsHistory">Transactions History</NavLink>
             </li>
             <li>
-              <NavLink to="/dashboard/sendMoney">Send Money</NavLink>
+              <NavLink to="/sendMoney">Send Money</NavLink>
             </li>
             <li>
-              <NavLink to="/dashboard/cashOut">Cash-Out</NavLink>
+              <NavLink to="/cashOut">Cash-Out</NavLink>
             </li>
             <li>
-              <NavLink to="/dashboard/cashIn">Cash-In</NavLink>
+              <NavLink to="/cashIn">Cash-In</NavLink>
             </li>
             <li>
-              <NavLink to="/dashboard/balanceInquiry">Balance Inquiry</NavLink>
+              <NavLink to="/balanceInquiry">Balance Inquiry</NavLink>
             </li>
           </>
           {/* Agent route */}
           <>
             <li>
-              <NavLink to="/dashboard/overview">Overview</NavLink>
+              <NavLink to="/overview">Overview</NavLink>
             </li>
             <li>
-              <NavLink to="/dashboard/agentTransactionsHistory">
+              <NavLink to="/agentTransactionsHistory">
                 Transactions History
               </NavLink>
             </li>
 
             <li>
-              <NavLink to="/dashboard/cashInRequests">Cash-In Requests</NavLink>
+              <NavLink to="/cashInRequests">Cash-In Requests</NavLink>
             </li>
             <li>
-              <NavLink to="/dashboard/cashOutRequests">
-                Cash-Out Requests
-              </NavLink>
+              <NavLink to="/cashOutRequests">Cash-Out Requests</NavLink>
             </li>
             <li>
-              <NavLink to="/dashboard/agentBalanceInquiry">
-                Balance Inquiry
-              </NavLink>
+              <NavLink to="/agentBalanceInquiry">Balance Inquiry</NavLink>
             </li>
           </>
           {/* Admin route */}
           <>
             <li>
-              <NavLink to="/dashboard/overview">Overview</NavLink>
+              <NavLink to="/overview">Overview</NavLink>
             </li>
             <li>
-              <NavLink to="/dashboard/userManagement">User Management</NavLink>
+              <NavLink to="/userManagement">User Management</NavLink>
             </li>
 
             <li>
-              <NavLink to="/dashboard/systemMonitoring">
-                System Monitoring
-              </NavLink>
+              <NavLink to="/systemMonitoring">System Monitoring</NavLink>
             </li>
           </>
         </ul>
