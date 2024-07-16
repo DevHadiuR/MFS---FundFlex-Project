@@ -1,13 +1,11 @@
 import { Button, Input } from "@material-tailwind/react";
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { IoMdEyeOff } from "react-icons/io";
 import { IoEye } from "react-icons/io5";
 
-const CashOut = () => {
+const CashIn = () => {
   const [showPass, setShowPass] = useState(false);
-
   const {
     register,
     handleSubmit,
@@ -30,7 +28,7 @@ const CashOut = () => {
     </Helmet> */}
       <div>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-normal text-green-500">
-          Cash Out
+          Cash IN
         </h1>
         <h1 className="text-4xl md:text-6xl lg:text-6xl font-normal text-[#39474F]">
           ReQuest
@@ -46,19 +44,19 @@ const CashOut = () => {
             {/* Agent Number input */}
 
             <div className="mt-5  form-control">
-            <label>
+              <label>
                 Select Agent <span className="text-red-400">*</span>{" "}
               </label>
               <select
-                name="cashOutAgentNumber"
+                name="cashInAgentNumber"
                 className="select select-success w-full text-base mt-2"
-                {...register("cashOutAgentNumber", { required: true })}
+                {...register("cashInAgentNumber", { required: true })}
               >
                 <option>One Piece</option>
                 <option>Naruto</option>
               </select>
 
-              {errors.cashOutAgentNumber && (
+              {errors.cashInAgentNumber && (
                 <span className="text-red-600">This field is required</span>
               )}
             </div>
@@ -71,14 +69,14 @@ const CashOut = () => {
               <Input
                 variant="standard"
                 placeholder="Give the amount"
-                name="cashOutAmount"
+                name="cashInAmount"
                 type="Number"
                 size="md"
                 color="green"
-                {...register("cashOutAmount", { required: true })}
+                {...register("cashInAmount", { required: true })}
                 className="py-3 text-xl"
               />
-              {errors.cashOutAmount && (
+              {errors.cashInAmount && (
                 <span className="text-red-600">This field is required</span>
               )}
             </div>
@@ -91,11 +89,11 @@ const CashOut = () => {
               <Input
                 variant="standard"
                 placeholder="Enter Your valid PIN"
-                name="cashOuterPin"
+                name="cashInnerPin"
                 type={showPass ? "text" : "password"}
                 size="md"
                 color="green"
-                {...register("cashOuterPin", { required: true })}
+                {...register("cashInnerPin", { required: true })}
                 className="py-3 text-xl"
               />
               <span
@@ -108,7 +106,7 @@ const CashOut = () => {
                   <IoMdEyeOff className="text-black" />
                 )}
               </span>
-              {errors.cashOuterPin && (
+              {errors.cashInnerPin && (
                 <span className="text-red-600">This field is required</span>
               )}
             </div>
@@ -119,7 +117,7 @@ const CashOut = () => {
                 color="green"
                 className=" text-base rounded-full px-10"
               >
-                MONEY-OUT
+                MONEY-IN
               </Button>
               {/* <ToastContainer /> */}
             </div>
@@ -130,4 +128,4 @@ const CashOut = () => {
   );
 };
 
-export default CashOut;
+export default CashIn;

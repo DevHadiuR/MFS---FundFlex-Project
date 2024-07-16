@@ -6,6 +6,7 @@ import Overview from "../../Pages/dashboard/overview/Overview";
 import UserTransactions from "../../Pages/dashboard/userTransactions/UserTransactions";
 import SendMoney from "../../Pages/dashboard/userSendMoney/SendMoney";
 import CashOut from "../../Pages/dashboard/userCashOut/CashOut";
+import CashIn from "../../Pages/dashboard/userCashIn/CashIn";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: "/cashOut",
         element: <CashOut></CashOut>,
+      },
+      {
+        path: "/cashIn",
+        element: <CashIn></CashIn>,
       },
     ],
   },
