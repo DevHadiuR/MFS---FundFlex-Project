@@ -9,6 +9,7 @@ import CashOut from "../../Pages/dashboard/userCashOut/CashOut";
 import CashIn from "../../Pages/dashboard/userCashIn/CashIn";
 import UserBalanceInquery from "../../Pages/dashboard/userBalanceInquery/UserBalanceInquery";
 import AgentTransactions from "../../Pages/dashboard/agentTransactions/AgentTransactions";
+import AgentAllCashInRequest from "../../Pages/dashboard/agentAllCashInRequest/AgentAllCashInRequest";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
       {
         path: "/agentTransactionsHistory",
         element: <AgentTransactions></AgentTransactions>,
+      },
+      {
+        path: "/cashInRequests",
+        element: <AgentAllCashInRequest></AgentAllCashInRequest>,
       },
     ],
   },
