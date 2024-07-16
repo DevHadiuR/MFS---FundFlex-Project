@@ -1,6 +1,7 @@
 import { Typography } from "@material-tailwind/react";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { NavLink, Outlet } from "react-router-dom";
+import Header from "../../../Shared/Header/Header";
 
 const Dashboard = () => {
   return (
@@ -9,7 +10,7 @@ const Dashboard = () => {
 
       <div className="drawer-content  bg-[#f6f6f6e3]">
         {/* Page content here */}
-
+        <Header></Header>
         <Outlet></Outlet>
       </div>
       {/* drawer button icon */}
