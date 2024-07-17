@@ -56,6 +56,38 @@ const Register = () => {
             text: "You Have Successfully Registered!",
             icon: "success",
           });
+
+          const newDataWithoutPin = {
+            photoUrl: newData.photoUrl,
+            name: newData.name,
+            number: newData.number,
+            email: newData.email,
+            status: newData.status,
+          };
+
+          const newDataString = JSON.stringify(newDataWithoutPin);
+          if (newDataString) {
+            localStorage.setItem("user-info", newDataString);
+            const storedDataString = localStorage.getItem("user-info");
+            if (storedDataString) {
+              const storedData = JSON.parse(storedDataString);
+              const storedEmail = storedData.email;
+              if (storedEmail) {
+                const userInfo = {
+                  email: storedEmail,
+                };
+
+                axiosPublic.post("/jwt", userInfo)
+                .then((res) => {
+                  console.log(res.data);
+                  if (res.data.token) {
+                    localStorage.setItem("access-token", res.data.token);
+                    //   setLoader(false);
+                  }
+                });
+              }
+            }
+          }
         }
       })
       .catch((err) => {
@@ -67,6 +99,10 @@ const Register = () => {
       });
   };
 
+  //   const email = localStorage.getItem("user-info", email);
+  //   if (email) {
+  //     console.log("email from local", email);
+  //   }
   return (
     <div className="mx-4 my-20 md:container lg:max-w-6xl lg:mx-auto md:px-8 ">
       {/* <Helmet>
