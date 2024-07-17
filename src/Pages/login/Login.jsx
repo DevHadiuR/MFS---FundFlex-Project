@@ -1,11 +1,13 @@
 import { Button, Input } from "@material-tailwind/react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -30,10 +32,55 @@ const Login = () => {
       axiosPublic
         .post("/login-for-userInfo", data)
         .then((res) => {
-          console.log(res.data);
+          const data = res.data;
+
+          const newDataWithoutPin = {
+            photoUrl: data.photoUrl,
+            name: data.name,
+            number: data.number,
+            email: data.email,
+            status: data.status,
+          };
+          const newDataString = JSON.stringify(newDataWithoutPin);
+
+          if (newDataString) {
+            navigate("/overview");
+
+            localStorage.setItem("user-info", newDataString);
+            const storedDataString = localStorage.getItem("user-info");
+            if (storedDataString) {
+              const storedData = JSON.parse(storedDataString);
+              const storedEmail = storedData.email;
+              if (storedEmail) {
+                const userInfo = {
+                  email: storedEmail,
+                };
+
+                axiosPublic.post("/jwt", userInfo).then((res) => {
+                  console.log(res.data);
+                  if (res.data.token) {
+                    localStorage.setItem("access-token", res.data.token);
+                    window.location.reload();
+                    Swal.fire({
+                      title: "Congratulation!",
+                      text: "You Have Successfully Loged In!",
+                      icon: "success",
+                    });
+                    //   setLoader(false);
+                  }
+                });
+              }
+            }
+          }
+
+          //
+          console.log(data);
         })
         .catch((err) => {
-          console.log(err);
+          Swal.fire({
+            icon: "error",
+            title: err.response.data.message,
+          });
         });
     }
   };

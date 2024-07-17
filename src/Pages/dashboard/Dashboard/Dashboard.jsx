@@ -1,16 +1,20 @@
 import { Typography } from "@material-tailwind/react";
 import { HiMenuAlt2 } from "react-icons/hi";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import Header from "../../../Shared/Header/Header";
 
 const Dashboard = () => {
+  const location = useLocation();
+  const headFootNotShowing =
+    location.pathname.includes("/login") ||
+    location.pathname.includes("/register");
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
 
       <div className="drawer-content  bg-[#f6f6f6e3]">
         {/* Page content here */}
-        <Header></Header>
+        {headFootNotShowing || <Header></Header>}
         <Outlet></Outlet>
       </div>
       {/* drawer button icon */}

@@ -8,9 +8,9 @@ import Swal from "sweetalert2";
 const Header = () => {
   const { runningUser: user, setRunningUser } = useCurrentUser();
   console.log(user);
-  // const user = false;
 
-  // logout the user
+  const { photoUrl, name, number, email, status } = user || {};
+
   const logout = () => {
     Swal.fire({
       title: "Are you sure?",
