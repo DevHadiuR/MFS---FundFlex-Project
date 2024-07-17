@@ -12,22 +12,7 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  //   const onSubmit = (data) => {
-  //     const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.identifier);
-  //     const isMobileNumber = /^\d{11}$/.test(data.identifier);
-
-  //     if (!isEmail && !isMobileNumber) {
-  //       setError("identifier", {
-  //         type: "manual",
-  //         message: "Please enter a valid email or mobile number.",
-  //       });
-  //     } else {
-  //       clearErrors("identifier");
-
-  //       console.log(data);
-  //     }
-  //   };
-
+  
   const onSubmit = (data) => {
     console.log(data);
   };
