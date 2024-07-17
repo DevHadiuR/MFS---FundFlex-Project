@@ -2,12 +2,13 @@ import { Button } from "@material-tailwind/react";
 import { IoPower } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import "../../Pages/commonBorderAnimate.css";
+import useCurrentUser from "../../hooks/useCurrentUser";
 
 const Header = () => {
-  const user = false;
-  const photoURL = null;
-  const displayName = null;
-  const email = null;
+  const user = useCurrentUser();
+  console.log(user);
+  // const user = false;
+
   const logout = null;
   return (
     <div className=" flex justify-end p-5 ">
@@ -16,7 +17,7 @@ const Header = () => {
           <div className="dropdown md:dropdown-hover">
             <div tabIndex={0} role="button" className="avatar m-1">
               <div className="w-10 md:w-12 lg:w-14 rounded-full ring ring-[#FDB913] ring-offset-base-100 ring-offset-2">
-                <img src={photoURL} />
+                <img src={user?.photoUrl} />
               </div>
             </div>
             <ul
@@ -24,10 +25,10 @@ const Header = () => {
               className="dropdown-content border-2 -right-2 md:right-6  z-50 menu p-2 shadow-md bg-base-100 rounded-box text-base md:text-lg text-[#39474F]"
             >
               <li>
-                <p>{displayName}</p>
+                <p>{user?.name}</p>
               </li>
               <li>
-                <p>{email}</p>
+                <p>{user?.email}</p>
               </li>
               <li></li>
               <li className="w-full my-3">
