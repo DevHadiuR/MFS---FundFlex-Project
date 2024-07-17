@@ -1,13 +1,14 @@
 import { Button, Input } from "@material-tailwind/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "sweetalert2/src/sweetalert2.scss";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Register = () => {
   const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -50,7 +51,7 @@ const Register = () => {
         }
 
         if (data.insertedId) {
-          //   navigate("/");
+          navigate("/overview");
           Swal.fire({
             title: "Congratulation!",
             text: "You Have Successfully Registered!",
@@ -77,11 +78,11 @@ const Register = () => {
                   email: storedEmail,
                 };
 
-                axiosPublic.post("/jwt", userInfo)
-                .then((res) => {
+                axiosPublic.post("/jwt", userInfo).then((res) => {
                   console.log(res.data);
                   if (res.data.token) {
                     localStorage.setItem("access-token", res.data.token);
+                    window.location.reload();
                     //   setLoader(false);
                   }
                 });

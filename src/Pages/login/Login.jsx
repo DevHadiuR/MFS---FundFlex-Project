@@ -1,8 +1,11 @@
 import { Button, Input } from "@material-tailwind/react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const Login = () => {
+  const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
@@ -12,9 +15,27 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  
+  //   const { data: userInfo = [], refetch } = useQuery({
+  //     queryKey: ["singleUserInfo"],
+  //     queryFn: async () => {
+  //       const res = await axiosPublic.get("/login-for-userInfo");
+  //       return res.data;
+  //     },
+  //   });
+
   const onSubmit = (data) => {
     console.log(data);
+
+    if (data) {
+      axiosPublic
+        .post("/login-for-userInfo", data)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   return (
@@ -65,14 +86,14 @@ const Login = () => {
               <Input
                 variant="standard"
                 placeholder="Enter Your 5 digit PIN"
-                name="pinNumber"
+                name="loginPinNumber"
                 type="number"
                 size="md"
                 color="green"
-                {...register("pinNumber", { required: true })}
+                {...register("loginPinNumber", { required: true })}
                 className="py-3 text-xl"
               />
-              {errors.pinNumber && (
+              {errors.loginPinNumber && (
                 <span className="text-red-600">This field is required</span>
               )}
             </div>

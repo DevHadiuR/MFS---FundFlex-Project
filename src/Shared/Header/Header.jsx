@@ -3,13 +3,42 @@ import { IoPower } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import "../../Pages/commonBorderAnimate.css";
 import useCurrentUser from "../../hooks/useCurrentUser";
+import Swal from "sweetalert2";
 
 const Header = () => {
-  const user = useCurrentUser();
+  const { runningUser: user, setRunningUser } = useCurrentUser();
   console.log(user);
   // const user = false;
 
-  const logout = null;
+  // logout the user
+  const logout = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You Wanna Sign Out ?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "SURE",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("user-info");
+        localStorage.removeItem("access-token");
+
+        if (
+          !localStorage.getItem("user-info") &&
+          !localStorage.getItem("access-token")
+        ) {
+          setRunningUser(null);
+          Swal.fire({
+            title: "Sir You Have Successfully Log Out!",
+            icon: "success",
+          });
+        }
+      }
+    });
+  };
+
   return (
     <div className=" flex justify-end p-5 ">
       <div className="flex items-center gap-x-1">
@@ -34,9 +63,9 @@ const Header = () => {
               <li className="w-full my-3">
                 <Button
                   onClick={logout}
-                  color="amber"
+                  color="green"
                   size="sm"
-                  className="flex justify-center items-center gap-2 md:text-base w-full hover:bg-[#39474F] hover:text-white"
+                  className="flex justify-center items-center gap-2 md:text-base w-[70%] mx-auto hover:bg-[#39474F] hover:text-white"
                 >
                   {" "}
                   <IoPower />
