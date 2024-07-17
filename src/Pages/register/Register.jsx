@@ -1,8 +1,13 @@
 import { Button, Input } from "@material-tailwind/react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import "sweetalert2/src/sweetalert2.scss";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Register = () => {
+  const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
@@ -11,7 +16,55 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const regex = /^\d{5}$/;
+    if (!regex.test(data.pinNumber)) {
+      Swal.fire({
+        title: "PIN must be 5 digit number!",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
+
+    // const userInfo = {
+    //   email: data.email,
+    // };
+    const newData = {
+      ...data,
+      status: "Pending",
+    };
+
+    console.log(newData);
+
+    axiosPublic
+      .post("/allUsers", newData)
+      .then((userRes) => {
+        const data = userRes.data;
+        console.log(data);
+        if (data.message) {
+          Swal.fire({
+            icon: "info",
+            title: data.message,
+          });
+          //   navigate(from, { replace: true });
+        }
+
+        if (data.insertedId) {
+          //   navigate("/");
+          Swal.fire({
+            title: "Congratulation!",
+            text: "You Have Successfully Registered!",
+            icon: "success",
+          });
+        }
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Sorry...",
+          text: err,
+        });
+      });
   };
 
   return (
