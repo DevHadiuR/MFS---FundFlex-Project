@@ -14,6 +14,8 @@ import AgentAllCashOutRequest from "../../Pages/dashboard/agentAllCashoutRequest
 import AgentBalanceQuery from "../../Pages/dashboard/agentBalanceQuery/AgentBalanceQuery";
 import UserManageByAdmin from "../../Pages/dashboard/userManageByAdmin/UserManageByAdmin";
 import AdminSystemMonitoring from "../../Pages/dashboard/adminSystemMonitoring/AdminSystemMonitoring";
+import Register from "../../Pages/register/Register";
+import Login from "../../Pages/login/Login";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ export const router = createBrowserRouter([
       {
         path: "/overview",
         element: <Overview></Overview>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
       },
       // routes for user
       {

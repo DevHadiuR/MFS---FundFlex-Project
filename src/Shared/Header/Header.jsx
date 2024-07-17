@@ -10,7 +10,7 @@ const Header = () => {
   const email = null;
   const logout = null;
   return (
-    <div className=" flex justify-end p-5">
+    <div className=" flex justify-end p-5 ">
       <div className="flex items-center gap-x-1">
         {user ? (
           <div className="dropdown md:dropdown-hover">
@@ -50,20 +50,18 @@ const Header = () => {
               <Button
                 variant="text"
                 size="sm"
-                className="hidden text-[#39474F]  text-base hover:bg-transparent lg:inline-block border-animate"
+                className=" text-[#39474F]  text-base hover:bg-transparent  border-animate"
               >
                 <span>Log In</span>
               </Button>
             </Link>
-            <span className="text-black text-3xl mr-3 hidden lg:inline-block">
-              /
-            </span>
+            <span className="text-black text-3xl mr-3 ">/</span>
             <Link to="/register">
               <Button
                 variant="gradient"
                 size="sm"
                 color="green"
-                className="hidden text-base lg:inline-block"
+                className="text-base "
               >
                 <span>REGISTER</span>
               </Button>
